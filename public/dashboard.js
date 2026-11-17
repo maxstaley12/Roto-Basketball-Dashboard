@@ -127,7 +127,7 @@ function fillText() {
   setText('n-top', 'The top 250 ' + S.noun + ' by web-search clicks in this range. Pages with several query-string versions are combined.' +
     (DATA.yoy ? ' "Last yr" is the same dates shifted back 364 days; "new" means the page had no search clicks then.' : '') + ' Scroll inside the table to see more.');
   setText('h-converting', S.Noun + ' with the most purchases');
-  setText('n-conv', 'Purchases are credited to the page a session landed on, so they show where the visit started, not necessarily where the buyer decided. Only pages with at least one purchase appear, up to 250, and counts per page are small, so read the tail as examples, not a ranking.' + (DATA.yoy ? ' "Last yr" is the same dates shifted back 364 days; "new" means no purchases from that page then. Pages that had purchases last year but none now are not listed.' : '') + ' Scroll inside the table to see more.');
+  setText('n-conv', 'Purchases are credited to the page a session landed on, so they show where the visit started, not necessarily where the buyer decided. Only pages with at least one purchase this year or last year appear, up to 250, and counts per page are small, so read the tail as examples, not a ranking.' + (DATA.yoy ? ' "Last yr" is the same dates shifted back 364 days (aligned weekdays); "new" means no purchases from that page then, and "lost" marks pages that had purchases last year but none now (listed after the pages that have purchases). Sessions here count every channel, not just organic, so they will not match the organic cards above; "n/a" means the page was outside last year\'s top landing pages.' : '') + ' Scroll inside the table to see more.');
   q('.th-page').forEach((t) => { t.textContent = S.th; });
   setText('h-topics', 'Which topics drive traffic and purchases');
   setText('n-topics', 'Organic search sessions and purchases to ' + S.path + ' grouped by topic, using keywords in each page\'s URL. Same dates and view as everything above; the legend shows each topic\'s count and share.');
@@ -311,9 +311,11 @@ function render() {
     { key: 'impressions', num: true, fmt: NUM.int }, { key: 'position', num: true, fmt: NUM.dec1 },
   ]);
   fillTable('[data-draw="conv_rows"]', DATA.converters || [], [
-    { key: 'label', fmt: String }, { key: 'sessions', num: true, fmt: NUM.int }, { key: 'purchases', num: true, fmt: NUM.int },
+    { key: 'label', fmt: String }, { key: 'sessions', num: true, fmt: NUM.int },
+    { key: 'sessions_ly', num: true, yoy: true, text: (r) => (r.sessions_ly == null ? 'n/a' : NUM.int(r.sessions_ly)) },
+    { key: 'purchases', num: true, fmt: NUM.int },
     { key: 'purchases_ly', num: true, yoy: true, fmt: NUM.int },
-    { key: 'change_abs', num: true, yoy: true, text: (r) => (r.is_new ? 'new' : signed(r.change_abs)), tone: (r) => (r.is_new ? 'flat' : goodBad(r.change_abs)) },
+    { key: 'change_abs', num: true, yoy: true, text: (r) => (r.is_new ? 'new' : r.dropped ? 'lost (' + signed(r.change_abs) + ')' : signed(r.change_abs)), tone: (r) => (r.is_new ? 'flat' : goodBad(r.change_abs)) },
   ]);
   document.querySelectorAll('.tablewrap').forEach((t) => { t.scrollTop = 0; });
 }

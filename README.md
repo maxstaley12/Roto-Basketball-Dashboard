@@ -44,6 +44,7 @@ Evergreen views are dominated by that one page.
   plus the depth chart (including the team pages), draft assistant, advice, shot chart, mock draft and start/sit hub pages.
   Left out: articles, headlines, news, player and team pages, pages under advice, news.php and the /basketball/articles listing page.
   The rule lives in `lib/config.js` (`evergreen`). To add or drop a hub folder, edit that list and redeploy.
+* Page tables (top pages by clicks, most purchases) compare with last year in every view: last-year columns and change, "new" for pages with nothing last year, and "lost" rows for pages that had purchases last year but none now. The purchases table counts all channels; the top pages table is Search Console.
 * Dates: two date pickers plus quick ranges. Last year is always the same dates shifted back 364 days. Ranges of 21 days or fewer chart by day, longer ones by week.
 * A link keeps the view: `?scope=evergreen&start=2026-10-20&end=2026-11-15`.
 * Articles published (est.) is calculated for the Articles view from `data/publish-dates.json` (a snapshot of the basketball article sitemap, Nov 17; publish dates are estimated from article ID order plus last-modified times). It shows a dash in the other views.

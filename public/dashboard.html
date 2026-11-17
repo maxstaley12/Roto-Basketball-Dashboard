@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NBA Articles Tracker</title>
+</head><body>
+<link rel="stylesheet" href="dashboard.css">
+<div class="nfl">
+  <header>
+    <div class="hrow">
+      <div>
+        <h1 id="page-title"><span class="sq"></span><span id="title-text">NBA Articles Tracker</span></h1>
+        <p class="scope" id="scope">Season to date, Oct 20 to Nov 15, 2026, vs the weekday-aligned weeks of 2025 (Oct 21 to Nov 16) · only pages under /basketball/article/ · GA4 + Search Console</p>
+      </div>
+      <div class="rangebox" id="rangebox">27 days</div>
+    </div>
+    <div class="rule"></div>
+    <nav class="pills" id="nav">
+      <a href="#kpis">Overview</a><a href="#trend">Weekly trends</a><a href="#topics">Topics</a><a href="#pages" id="nav-pages">Top articles</a><a href="#converting">Purchases</a><a href="#defs">Definitions</a>
+    </nav>
+    <div class="controls" id="controls">
+      <div class="ctl">
+        <span class="ctl-label">View</span>
+        <div class="seg" id="scope-seg" role="group" aria-label="Page scope">
+          <button type="button" data-scope="article" class="on">Articles <i>/basketball/article</i></button>
+          <button type="button" data-scope="basketball">All /basketball</button>
+          <button type="button" data-scope="evergreen">Evergreen pages</button>
+        </div>
+      </div>
+      <div class="ctl">
+        <span class="ctl-label">Dates</span>
+        <div class="dates">
+          <input type="date" id="d-start" aria-label="Start date">
+          <span class="to">to</span>
+          <input type="date" id="d-end" aria-label="End date">
+          <button type="button" id="d-apply" class="apply">Apply</button>
+        </div>
+      </div>
+      <div class="ctl">
+        <span class="ctl-label">Quick ranges</span>
+        <div class="presets" id="presets">
+          <button type="button" data-preset="season">Season to date</button>
+          <button type="button" data-preset="l14">Last 14 days</button>
+          <button type="button" data-preset="l28">Last 28 days</button>
+        </div>
+      </div>
+      <p class="ctl-msg" id="ctl-msg" role="status"></p>
+    </div>
+  </header>
+
+  <section id="kpis">
+    <div class="kick" id="kickoff"><b>Season note.</b> The NBA season opened Oct. 20 in 2026 and Oct. 21 in 2025, so the weekday-aligned comparison lines up from opening night.</div>
+    <p class="lede" id="lede" data-draw="lede">—</p>
+    <div class="tiles">
+<div class="tile lead">
+  <div class="tile-label">Organic sessions</div>
+  <div class="tile-value" data-draw="tile" data-metric="Organic sessions" data-fmt="int" data-source="kpi" data-where="metric=Organic sessions" data-field="current">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip" data-draw="chip" data-kind="pct" data-better="up" data-metric="Organic sessions" data-source="kpi" data-where="metric=Organic sessions" data-field="yoy_pct">—</span> <span class="vs"> vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" data-draw="ly" data-metric="Organic sessions" data-fmt="int" data-source="kpi" data-where="metric=Organic sessions" data-field="last_year">—</span></span>
+  </div>
+</div>
+<div class="tile" id="tile-articles">
+  <div class="tile-label">Articles published (est.)</div>
+  <div class="tile-value" id="art-cur">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip flat" id="art-chip">—</span> <span class="vs" id="art-vs">vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" id="art-ly">—</span></span>
+  </div>
+</div>
+<div class="tile">
+  <div class="tile-label">Search clicks</div>
+  <div class="tile-value" data-draw="tile" data-metric="Search clicks" data-fmt="int" data-source="kpi" data-where="metric=Search clicks" data-field="current">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip" data-draw="chip" data-kind="pct" data-better="up" data-metric="Search clicks" data-source="kpi" data-where="metric=Search clicks" data-field="yoy_pct">—</span> <span class="vs"> vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" data-draw="ly" data-metric="Search clicks" data-fmt="int" data-source="kpi" data-where="metric=Search clicks" data-field="last_year">—</span></span>
+  </div>
+</div>
+<div class="tile">
+  <div class="tile-label">Search impressions</div>
+  <div class="tile-value" data-draw="tile" data-metric="Search impressions" data-fmt="cmp" data-source="kpi" data-where="metric=Search impressions" data-field="current">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip" data-draw="chip" data-kind="pct" data-better="up" data-metric="Search impressions" data-source="kpi" data-where="metric=Search impressions" data-field="yoy_pct">—</span> <span class="vs"> vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" data-draw="ly" data-metric="Search impressions" data-fmt="cmp" data-source="kpi" data-where="metric=Search impressions" data-field="last_year">—</span></span>
+  </div>
+</div>
+<div class="tile">
+  <div class="tile-label">Avg position (lower is better)</div>
+  <div class="tile-value" data-draw="tile" data-metric="Average position" data-fmt="dec2" data-source="kpi" data-where="metric=Average position" data-field="current">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip" data-draw="chip" data-kind="abs" data-better="down" data-metric="Average position" data-source="kpi" data-where="metric=Average position" data-field="yoy_abs">—</span> <span class="vs">positions vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" data-draw="ly" data-metric="Average position" data-fmt="dec2" data-source="kpi" data-where="metric=Average position" data-field="last_year">—</span></span>
+  </div>
+</div>
+<div class="tile">
+  <div class="tile-label">Purchases</div>
+  <div class="tile-value" data-draw="tile" data-metric="Purchases" data-fmt="int" data-source="kpi" data-where="metric=Purchases" data-field="current">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip" data-draw="chip" data-kind="pct" data-better="up" data-metric="Purchases" data-source="kpi" data-where="metric=Purchases" data-field="yoy_pct">—</span> <span class="vs"> vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" data-draw="ly" data-metric="Purchases" data-fmt="int" data-source="kpi" data-where="metric=Purchases" data-field="last_year">—</span></span>
+  </div>
+</div>
+<div class="tile">
+  <div class="tile-label">Click-through rate</div>
+  <div class="tile-value" data-draw="tile" data-metric="Search click-through rate" data-fmt="pct" data-source="kpi" data-where="metric=Search click-through rate" data-field="current">—</div>
+  <div class="chips">
+    <span class="chiprow"><span class="chip" data-draw="chip" data-kind="abs" data-better="up" data-metric="Search click-through rate" data-source="kpi" data-where="metric=Search click-through rate" data-field="yoy_abs">—</span> <span class="vs">pts vs last year</span></span>
+    <span class="chiprow"><span class="vs">Last year:</span> <span class="ly" data-draw="ly" data-metric="Search click-through rate" data-fmt="pct" data-source="kpi" data-where="metric=Search click-through rate" data-field="last_year">—</span></span>
+  </div>
+</div>
+    </div>
+    <p class="note asofline" id="asof"><span class="asof" id="asof-tag">AS OF NOV 15</span> <span id="asof-text">Search Console data lags about two days, so the window ends Nov 15 for both sources. Articles published is estimated from the basketball article sitemap (snapshot Nov 17), not read live.</span></p>
+  </section>
+
+  <section id="trend">
+    <h2 id="h-sessions">Organic sessions by week</h2>
+    <p class="note" id="n-weeks">Each point is one week, Saturday to Friday, labeled by this season's start date. Last year's weeks are shifted 364 days so weekdays line up; the dashed line is 2025.</p>
+    <div class="card chart" id="chart-sessions" data-draw="chart_sessions" data-source="weekly" data-field="sessions"></div>
+    <h2 id="h-clicks">Search clicks by week</h2>
+    <p class="note" id="n-clicks">Google web search clicks to /basketball/article/, same weekly buckets.</p>
+    <div class="card chart" id="chart-clicks" data-draw="chart_clicks" data-source="weekly" data-field="clicks"></div>
+    <h2 id="h-purchases">Purchases by week</h2>
+    <p class="note" id="n-purch">Purchases from organic sessions that landed on these articles. Weekly counts are small, so expect noise.</p>
+    <div class="card chart" id="chart-purchases" data-draw="chart_purchases" data-source="weekly" data-field="purchases"></div>
+  </section>
+
+  <section id="topics">
+    <h2 id="h-topics">Which topics drive traffic and purchases</h2>
+    <p class="note" id="n-topics">Organic sessions and organic purchases grouped by topic, using keywords in each page's URL.</p>
+    <div class="pies">
+      <div class="card pie" id="pie-sessions"></div>
+      <div class="card pie" id="pie-purchases"></div>
+    </div>
+  </section>
+
+  <section id="pages">
+    <h2 id="h-pages">Top articles by search clicks</h2>
+    <p class="note" id="n-top">The top 250 articles by web-search clicks this season. Scroll inside the table to see more.</p>
+    <div class="card tablewrap">
+      <table class="grid" id="tbl-top" data-source="top_pages" data-row-key="label">
+        <thead><tr><th data-field="label" class="th-page">Article</th><th class="num" data-field="clicks">Clicks</th><th class="num yoy" data-field="clicks_ly">Clicks last yr</th><th class="num yoy" data-field="change_pct">Change</th><th class="num" data-field="impressions">Impressions</th><th class="num" data-field="position">Avg position</th></tr></thead>
+        <tbody data-draw="top_rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="converting">
+    <h2 id="h-converting">Articles with the most purchases</h2>
+    <p class="note" id="n-conv">Purchases are credited to the page a session landed on, so they show where the visit started, not necessarily where the buyer decided. Only pages with at least one purchase appear, up to 250, and counts per page are small, so read the tail as examples, not a ranking. Scroll inside the table to see more.</p>
+    <div class="card tablewrap">
+      <table class="grid" id="tbl-conv" data-source="converters" data-row-key="label">
+        <thead><tr><th data-field="label" class="th-page">Article</th><th class="num" data-field="sessions">Sessions</th><th class="num" data-field="purchases">Purchases</th><th class="num yoy" data-field="purchases_ly">Purchases last yr</th><th class="num yoy" data-field="change_abs">Change</th></tr></thead>
+        <tbody data-draw="conv_rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details class="defs" id="defs">
+    <summary>Definitions and caveats</summary>
+    <ul>
+      <li><b>Search clicks, impressions, position:</b> Google Search Console, web search only. Discover and News are not included, which is one reason GA4 organic sessions run higher than clicks.</li>
+      <li><b>Sessions:</b> <span id="def-scope">GA4 sessions whose landing page is under /basketball/article/.</span> "Organic" means the Organic Search channel group; "all-channel" includes direct, email, social, referral and AI assistants.</li>
+      <li><b>Purchases:</b> the GA4 purchase key event on sessions that landed on these articles, across all channels. A buyer who reads an article and purchases in a later session is credited to that later session's landing page.</li>
+      <li><b>Topics (pie charts):</b> each landing page is placed in the first topic whose keywords match its URL (for example "mock-draft" or "cheat-sheet"; the keyword list is in the project's config file). Both pies count organic search only, by landing page, so the purchase pie total will not match the all-channel Purchases card. Landing pages GA4 does not itemize (about 3% of article sessions) are counted under "Everything else" so the pie matches the Organic sessions card. Purchase counts are small, so a few pages can swing a slice.</li>
+      <li><b>Articles published (est.):</b> Shown for the Articles view only.  a count of /basketball/article/ URLs in the sitemap, dated by estimated publish date (each article's ID order combined with last-modified times, so later edits are not counted as new articles). Articles deleted since publication are not in the sitemap, so last year's count may be understated. This is a snapshot and does not refresh with the other cards.</li>
+      <li><b>Window:</b> <span id="def-window">27 days, ending Nov 15.</span> Search Console data lags a couple of days, so the latest end date you can pick is two days ago. Last year's comparison is always the same dates shifted back 364 days so weekdays line up. Ranges of 21 days or fewer are charted by day; longer ranges by week, counted from your start date, and a final partial week is marked in the tooltip.</li>
+      <li><b>Year over year:</b> article mix, publishing volume and the NBA calendar differ between seasons, so treat it as directional.</li>
+    </ul>
+  </details>
+</div>
+<script src="d3.min.js"></script>
+<script src="dashboard.js"></script>
+
+</body></html>
